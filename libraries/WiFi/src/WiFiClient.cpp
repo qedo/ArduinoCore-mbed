@@ -80,10 +80,12 @@ int arduino::WiFiClient::connectSSL(const char *host, uint16_t port) {
 }
 
 size_t arduino::WiFiClient::write(uint8_t c) {
+    sock->set_blocking(false);
 	sock->send(&c, 1);
 }
 
 size_t arduino::WiFiClient::write(const uint8_t *buf, size_t size) {
+    sock->set_blocking(false);
 	sock->send(buf, size);
 }
 
